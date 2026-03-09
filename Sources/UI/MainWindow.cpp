@@ -47,6 +47,9 @@ void
 MainWindow::_BuildUI()
 {
 	
+	fMenuBarContainer = new BGroupView(B_HORIZONTAL, 0);
+	fMenuBarContainer->GroupLayout()->AddView(MainMenuBar);
+	
 	// Sidebar with contact list
 	BView* sidebar = new BView("sidebar", 0);
 	//sidebar->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
@@ -88,8 +91,8 @@ MainWindow::_BuildUI()
 	BGroupView* fViewerContainer = new BGroupView(B_HORIZONTAL, 0);
 	
 	fContactInfoSideView = new ContactInfoSideView();
-	//BLayoutItem* structureItem = fViewerContainer->GroupLayout()->AddView(fContactInfoSideView);
-	//structureItem->SetVisible(false);
+	//fContactInfoItem = fViewerContainer->GroupLayout()->AddView(fContactInfoSideView);
+	//fContactInfoItem->SetVisible(false);
 	
 	
 	// Message input area
@@ -154,11 +157,21 @@ MainWindow::_BuildUI()
 		.Add(fMainSplit, 1.0)
 	.End();
 	
+	fContactInfoItem = fViewerContainer->GroupLayout()->AddView(panels_view);
+	//fContactInfoItem->SetVisible(false);
+	fContactInfoItem = fViewerContainer->GroupLayout()->AddView(fContactInfoSideView);
+	fContactInfoItem->SetVisible(false);
+	
 	// === MAIN LAYOUT ===
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.Add(MainMenuBar)
-		.Add(panels_view, 1.0)
-		//.Add(fStatusBar)
+		.Add(fMenuBarContainer)
+		//.AddGroup(B_HORIZONTAL, 0)
+			//.Add(panels_view, 1.0)
+			.Add(fViewerContainer)
+			//.AddGlue()
+		//.Add(MainMenuBar)
+		//.Add(panels_view, 1.0)
+		//.End()
 	.End();
 }
 
@@ -230,6 +243,14 @@ MainWindow::MessageReceived(BMessage* message)
 			break;
 		case MSG_SHOW_CONTACT_INFO:
 			{
+				if(!fContactInfoItem->IsVisible() == true)
+				{
+					fContactInfoItem->SetVisible(true);
+				}
+				else
+				{
+					fContactInfoItem->SetVisible(false);
+				}
 			}
 			break;
 		default:

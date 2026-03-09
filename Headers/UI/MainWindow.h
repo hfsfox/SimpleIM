@@ -2,6 +2,7 @@
 #define __MAINWINODW_H__
 
 #include <Window.h>
+#include <GroupView.h>
 
 class BMenuBar;
 class BListView;
@@ -9,6 +10,7 @@ class BScrollView;
 class BSplitView;
 class ChatView;
 class ContactInfoSideView;
+class BLayoutItem;
 
 class MainWindow: public BWindow
 {
@@ -32,6 +34,9 @@ class MainWindow: public BWindow
 		BSplitView*		fMainSplit;
 		ChatView* fChatView;
 		ContactInfoSideView* fContactInfoSideView;
+		BGroupView* fViewerContainer;
+		BGroupView* fMenuBarContainer;
+		BLayoutItem* fContactInfoItem;
 };
 
 #endif
