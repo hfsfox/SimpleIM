@@ -134,7 +134,7 @@ MainWindow::_BuildUI()
 	BListView* folders_view = /*new BView("folders_view", 0)*/ new BListView("folders");
 	folders_view->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	BScrollView* foldersScroll = new BScrollView("chat_scroll", folders_view,
-		B_WILL_DRAW | B_FRAME_EVENTS, false, false, B_NO_BORDER);
+		B_WILL_DRAW | B_FRAME_EVENTS, false, true, B_NO_BORDER);
 		
 	foldersScroll->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
 	//sidebar->SetViewUIColor(B_BACKGROUND_COLOR);
