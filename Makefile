@@ -8,6 +8,8 @@ SRCS = \
 	Sources/UI/ContactItem.cpp \
 	Sources/UI/FolderItem.cpp \
 	Sources/UI/ContactInfoSideView.cpp \
+	Sources/UI/Views/AvatarView.cpp \
+	Sources/UI/Views/ChatMediaView.cpp \
 	Sources/UI/Deskbar/DeskbarReplicant.cpp \
 	Sources/Core/Contact.cpp
 RDEFS = Resources/Resource.rdef

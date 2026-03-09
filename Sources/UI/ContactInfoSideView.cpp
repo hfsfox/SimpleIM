@@ -1,4 +1,6 @@
 #include "UI/ContactInfoSideView.h"
+#include "UI/Views/AvatarView.h"
+#include "UI/Views/ChatMediaView.h"
 #include "Core/Contact.h"
 #include <SpaceLayoutItem.h>
 #include <Catalog.h>
@@ -7,7 +9,7 @@
 #define B_TRANSLATION_CONTEXT          "ConactInfoSideView"
 
 // Layout constants
-static const float kPanelMinWidth = 160.0f;
+static const float kPanelMinWidth = 170.0f;
 static const float kAvatarSize = 64.0f;
 
 //Contact contact;
@@ -29,16 +31,37 @@ ContactInfoSideView::ContactInfoSideView(const char* name)
 		fFont.SetFace(B_BOLD_FACE);
 		
 		BGroupLayout *vertLayout = new BGroupLayout(B_VERTICAL);
-		vertLayout->SetInsets(1, 0, 0, 0);
+		vertLayout->SetInsets(0, 0, 0, 0);
 		SetLayout(vertLayout);
 		
-		BStringView *fileTitle = new BStringView("file", B_TRANSLATE("Name:"));
-		fileTitle->SetFont(&fFont, B_FONT_FACE);
-		fileTitle->SetAlignment(B_ALIGN_CENTER);
+		AvatarView* av = new AvatarView("Name");
 		
-		fGroupView->AddChild(fileTitle);
+		fGroupView->AddChild(av);
 		
-		fGroupView->AddChild(BSpaceLayoutItem::CreateGlue());
+		BStringView *nameTitle = new BStringView("name", B_TRANSLATE("Name:"));
+		nameTitle->SetFont(&fFont, B_FONT_FACE);
+		nameTitle->SetAlignment(B_ALIGN_CENTER);
+		
+		fGroupView->AddChild(nameTitle);
+		
+		BStringView *lastSeemTitle = new BStringView("last_seem", B_TRANSLATE("Last seem:"));
+		lastSeemTitle->SetFont(&fFont, B_FONT_FACE);
+		lastSeemTitle->SetAlignment(B_ALIGN_CENTER);
+		
+		fGroupView->AddChild(lastSeemTitle);
+		
+		BStringView *statusTitle = new BStringView("status", B_TRANSLATE("Status:"));
+		statusTitle->SetFont(&fFont, B_FONT_FACE);
+		statusTitle->SetAlignment(B_ALIGN_CENTER);
+		
+		fGroupView->AddChild(statusTitle);
+		
+		ChatMediaView* cmv = new ChatMediaView("contact");
+		
+		fGroupView->AddChild(cmv);
+		
+		
+		//fGroupView->AddChild(BSpaceLayoutItem::CreateGlue());
 		
 		BView *child;
 		if ( child = fGroupView->ChildAt(0) )
