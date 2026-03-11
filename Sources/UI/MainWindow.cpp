@@ -64,7 +64,9 @@ MainWindow::_BuildUI()
 	fContactScroll = new BScrollView("contact_scroll", fContactList,
 		B_WILL_DRAW | B_FRAME_EVENTS, false, true, B_PLAIN_BORDER);
 		
+	fContactList->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 	//fContactScroll->SetLowColor(ui_color(B_PANEL_BACKGROUND_COLOR));
+	//fContactScroll->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 	
 	ContactItem* _ChannelItem = new ContactItem("Public Channel", true);
 	fContactList->AddItem(_ChannelItem);
@@ -139,7 +141,8 @@ MainWindow::_BuildUI()
 	BScrollView* foldersScroll = new BScrollView("chat_scroll", folders_view,
 		B_WILL_DRAW | B_FRAME_EVENTS, false, true, B_NO_BORDER);
 		
-	foldersScroll->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
+	//foldersScroll->SetLowColor(ui_color(B_LIST_BACKGROUND_COLOR));
+
 	//sidebar->SetViewUIColor(B_BACKGROUND_COLOR);
 	//folders_view->SetViewColor(kBackgroundColor);
 	//folders_view->SetViewUIColor(B_CONTROL_BACKGROUND_COLOR);

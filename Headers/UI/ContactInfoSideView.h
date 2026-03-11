@@ -12,8 +12,10 @@ class ContactInfoSideView: public BView
 		virtual ~ContactInfoSideView();
 	public:
 		void Draw(BRect updateRect);
-		
+		virtual void _DrawAvatar(BRect rect);
+		rgb_color				_AvatarColor() const;
 	private:
 		BGroupView* fGroupView;
 		BFont fFont;
+		const char* _contact_name;
 };

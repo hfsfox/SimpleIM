@@ -8,7 +8,7 @@ class AvatarView: public BView
 	public:
 		void Draw(BRect updateRect);
 		virtual void			AttachedToWindow();
-		virtual BSize			MinSize();
+		//virtual BSize			MinSize();
 		virtual BSize			PreferredSize();
 		virtual void			_DrawAvatar(BRect rect);
 		rgb_color				_AvatarColor() const;

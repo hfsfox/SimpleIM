@@ -97,12 +97,13 @@ AvatarView::_AvatarColor() const
 	}
 	return kAvatarColors[hash % kAvatarColorCount];
 }
-
+/*
 BSize
 AvatarView::MinSize()
 {
 	return BSize(200, kHeaderHeight);
 }
+*/
 
 
 BSize
